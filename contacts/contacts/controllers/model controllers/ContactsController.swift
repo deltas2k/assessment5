@@ -14,13 +14,13 @@ class ContactsController {
     
     var contact: [Contacts] = []
     
-    let publicDB = CKContainer.default().publicCloudDatabase
+    let privateDB = CKContainer.default().privateCloudDatabase
     
     //MARK: -Create
-    func createContact(name: String, number: Int, email: String, completion: @escaping (Bool) -> Void) {
+    func createContact(name: String, number: String, email: String, completion: @escaping (Bool) -> Void) {
         let newContact = Contacts(name: name, number: number, email: email)
         let newRecord = CKRecord(contacts: newContact)
-        publicDB.save(newRecord) { (record, error) in
+        privateDB.save(newRecord) { (record, error) in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 completion(false)
@@ -28,6 +28,7 @@ class ContactsController {
             }
             guard let record = record,
                 let savedContact = Contacts(ckRecord: record) else {completion(false);return}
+            print("added contact successfully")
             self.contact.append(savedContact)
         }
     }
@@ -36,7 +37,7 @@ class ContactsController {
     func fetchContacts(completion: @escaping (Bool) -> Void) {
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: ContactStrings.recordKey, predicate: predicate)
-        publicDB.perform(query, inZoneWith: nil) { (records, error) in
+        privateDB.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 completion(false)
@@ -50,7 +51,7 @@ class ContactsController {
     }
     
     //MARK: -Update
-    func updateContact(contact: Contacts, completion: @escaping (Bool) -> Void) {
+    func updateContact(contact: Contacts, name: String, number: String, email: String, completion: @escaping (Bool) -> Void) {
         let operation = CKModifyRecordsOperation(recordsToSave: [CKRecord(contacts: contact)], recordIDsToDelete: nil)
         operation.savePolicy = .changedKeys
         operation.qualityOfService = .userInteractive
@@ -59,7 +60,7 @@ class ContactsController {
             completion(true)
             print("contact updated successfully")
         }
-        publicDB.add(operation)
+        privateDB.add(operation)
     }
 
 }

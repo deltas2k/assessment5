@@ -19,11 +19,11 @@ struct ContactStrings {
 
 class Contacts {
     var name: String
-    var number: Int
+    var number: String
     var email: String
     let ckRecordID: CKRecord.ID
     
-    init(name: String, number: Int, email: String, ckRecordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
+    init(name: String, number: String, email: String, ckRecordID: CKRecord.ID = CKRecord.ID(recordName: UUID().uuidString)) {
         self.name = name
         self.number = number
         self.email = email
@@ -35,7 +35,7 @@ class Contacts {
 extension Contacts {
     convenience init?(ckRecord: CKRecord) {
         guard let name = ckRecord[ContactStrings.nameKey] as? String,
-            let number = ckRecord[ContactStrings.numberKey] as? Int,
+            let number = ckRecord[ContactStrings.numberKey] as? String,
             let email = ckRecord[ContactStrings.emailKey] as? String
             else {return nil}
         self.init(name: name, number: number, email: email, ckRecordID: ckRecord.recordID)
@@ -49,4 +49,12 @@ extension CKRecord {
         setValue(contacts.number, forKey: ContactStrings.numberKey)
         setValue(contacts.email, forKey: ContactStrings.emailKey)
     }
+}
+
+extension Contacts: Equatable {
+    static func == (lhs: Contacts, rhs: Contacts) -> Bool {
+        return lhs.ckRecordID == rhs.ckRecordID
+    }
+    
+    
 }

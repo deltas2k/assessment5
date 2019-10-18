@@ -15,6 +15,8 @@
 		342D098B235A0CB50081D0DF /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342D098A235A0CB50081D0DF /* CloudKit.framework */; };
 		342D098F235A0DD20081D0DF /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D098E235A0DD20081D0DF /* Contacts.swift */; };
 		342D0993235A13000081D0DF /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D0992235A13000081D0DF /* ContactsController.swift */; };
+		342D0996235A1BEA0081D0DF /* ContactsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D0995235A1BEA0081D0DF /* ContactsListTableViewController.swift */; };
+		342D0998235A1DE60081D0DF /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D0997235A1DE60081D0DF /* ContactDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		342D098A235A0CB50081D0DF /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		342D098E235A0DD20081D0DF /* Contacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
 		342D0992235A13000081D0DF /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
+		342D0995235A1BEA0081D0DF /* ContactsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsListTableViewController.swift; sourceTree = "<group>"; };
+		342D0997235A1DE60081D0DF /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		342D0990235A12DD0081D0DF /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				342D0994235A1B8B0081D0DF /* view controllers */,
 				342D0991235A12E90081D0DF /* model controllers */,
 			);
 			path = controllers;
@@ -114,6 +119,15 @@
 				342D0992235A13000081D0DF /* ContactsController.swift */,
 			);
 			path = "model controllers";
+			sourceTree = "<group>";
+		};
+		342D0994235A1B8B0081D0DF /* view controllers */ = {
+			isa = PBXGroup;
+			children = (
+				342D0995235A1BEA0081D0DF /* ContactsListTableViewController.swift */,
+				342D0997235A1DE60081D0DF /* ContactDetailViewController.swift */,
+			);
+			path = "view controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +204,8 @@
 				342D098F235A0DD20081D0DF /* Contacts.swift in Sources */,
 				342D0975235A0CA40081D0DF /* AppDelegate.swift in Sources */,
 				342D0993235A13000081D0DF /* ContactsController.swift in Sources */,
+				342D0996235A1BEA0081D0DF /* ContactsListTableViewController.swift in Sources */,
+				342D0998235A1DE60081D0DF /* ContactDetailViewController.swift in Sources */,
 				342D0977235A0CA40081D0DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
